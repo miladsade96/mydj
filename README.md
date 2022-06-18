@@ -1,0 +1,2 @@
+# mydj
+Django Sample Project
