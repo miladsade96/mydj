@@ -1,5 +1,5 @@
 from django.urls import path
-from website.views import index_view, about_view, contact_view, test_view
+from website.views import index_view, about_view, contact_view
 
 # Defining app name
 app_name = "website"
