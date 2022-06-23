@@ -9,5 +9,4 @@ class PostAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'
     list_display = ('title', 'counted_views', 'status', 'created_date', 'published_date')
     list_filter = ('status', 'created_date', 'published_date')
-    ordering = ('-created_date',)
     search_fields = ('title', 'content')
