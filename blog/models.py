@@ -13,6 +13,8 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-created_date']
+        verbose_name = 'Post'
+        verbose_name_plural = 'Posts'
 
     def __str__(self):
         return f"{self.title} - {self.id}"
