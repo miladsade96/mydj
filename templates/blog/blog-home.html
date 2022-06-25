@@ -108,7 +108,7 @@
             </ul>
             <div class="user-details row">
               <p class="user-name col-lg-12 col-md-12 col-6">
-                <a href="#">Mark wiens</a> <span class="lnr lnr-user"></span>
+                <a href="#">{{post.author.get_full_name}}</a> <span class="lnr lnr-user"></span>
               </p>
               <p class="date col-lg-12 col-md-12 col-6">
                 <a href="#">{{post.published_date}}</a>
@@ -130,7 +130,7 @@
             <p class="excert">
               {{post.content}}
             </p>
-            <a href="blog-single.html" class="primary-btn">View More</a>
+            <a href="{% url 'blog:single' pid=post.id%}"> View More </a>
           </div>
         </div>
         {% endfor %}
