@@ -11,5 +11,12 @@ def blog_view(request):
 
 def blog_single(request, pid):
     post = get_object_or_404(Post, id=pid, status=1)
+    increment_views(pid)
     context = {"post": post}
     return render(request, "blog/blog-single.html", context)
+
+
+def increment_views(pid):
+    post = get_object_or_404(Post, id=pid)
+    post.counted_views += 1
+    post.save()
