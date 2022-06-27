@@ -21,3 +21,13 @@ def increment_views(pid):
     post = get_object_or_404(Post, id=pid)
     post.counted_views += 1
     post.save()
+
+
+# Defining a function to get previous and next posts of a post in blog
+def get_previous_next_posts(pid):
+    post = get_object_or_404(Post, id=pid)
+    previous_post = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date').filter(
+        published_date__lte=post.published_date).exclude(id=pid).first()
+    next_post = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date').filter(
+        published_date__gte=post.published_date).exclude(id=pid).last()
+    return previous_post, next_post
