@@ -14,6 +14,11 @@ def blog_single(request, pid):
     post = get_object_or_404(Post, id=pid, status=1, published_date__lte=timezone.now())
     increment_views(pid)
     context = {"post": post}
+    previous_post, next_post = get_previous_next_posts(pid)
+    if previous_post:
+        context["previous_post"] = previous_post
+    if next_post:
+        context["next_post"] = next_post
     return render(request, "blog/blog-single.html", context)
 
 
