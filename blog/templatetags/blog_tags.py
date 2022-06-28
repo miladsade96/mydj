@@ -7,3 +7,19 @@ register = template.Library()
 @register.simple_tag(name="n_published_posts")
 def get_number_of_published_posts():
     return Post.objects.filter(status=1).count()
+
+
+@register.simple_tag(name="published_posts")
+def get_published_posts():
+    return Post.objects.filter(status=1)
+
+
+@register.filter
+def snippet(value, word_count):
+    return value[:word_count] + "..."
+
+
+@register.inclusion_tag("popular_posts.html")
+def popular_posts(count=3):
+    posts = Post.objects.filter(status=1).order_by("-counted_views")[:count]
+    return {"posts": posts}
