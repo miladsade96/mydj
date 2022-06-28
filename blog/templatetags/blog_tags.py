@@ -19,7 +19,7 @@ def snippet(value, word_count):
     return value[:word_count] + "..."
 
 
-@register.inclusion_tag("popular_posts.html")
-def popular_posts(count=3):
-    posts = Post.objects.filter(status=1).order_by("-counted_views")[:count]
+@register.inclusion_tag("blog/blog-latest-posts.html")
+def latest_posts(count=3):
+    posts = Post.objects.filter(status=1).order_by("-published_date")[:count]
     return {"posts": posts}
