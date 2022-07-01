@@ -42,3 +42,12 @@ def get_previous_next_posts(pid):
     next_post = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date').filter(
         published_date__gte=post.published_date).exclude(id=pid).last()
     return previous_post, next_post
+
+
+def blog_search(request):
+    posts = Post.objects.filter(status=1, published_date__lte=timezone.now()).order_by('-published_date')
+    if request.method == "GET":
+        if s := request.GET.get("s"):
+            posts = posts.filter(content__icontains=s)
+    context = {"posts": posts}
+    return render(request, "blog/blog-home.html", context)
