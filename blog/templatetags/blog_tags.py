@@ -25,6 +25,12 @@ def latest_posts(count=3):
     return {"posts": posts}
 
 
+@register.inclusion_tag("website/home-latest-posts.html")
+def home_latest_posts(count=6):
+    posts = Post.objects.filter(status=1).order_by("-published_date")[:count]
+    return {"posts": posts}
+
+
 @register.inclusion_tag("blog/blog-post-categories.html")
 def post_categories():
     posts = Post.objects.filter(status=1)
