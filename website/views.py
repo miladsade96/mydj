@@ -16,6 +16,8 @@ def contact_view(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
+            form = form.save(commit=False)
+            form.name = "Anonymous"
             form.save()
             messages.add_message(request, messages.SUCCESS, 'Your message has been sent!')
     form = ContactForm()
