@@ -60,6 +60,10 @@ ROOT_URLCONF = 'mydj.urls'
 
 SITE_ID = 2
 
+ROBOTS_USE_HOST = True
+ROBOTS_USE_SITEMAP = True
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
