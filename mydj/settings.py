@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "django.contrib.sites",
     "django.contrib.sitemaps",
+    "robots",
 ]
 
 MIDDLEWARE = [
