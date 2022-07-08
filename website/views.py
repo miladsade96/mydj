@@ -20,6 +20,8 @@ def contact_view(request):
             form.name = "Anonymous"
             form.save()
             messages.add_message(request, messages.SUCCESS, 'Your message has been sent!')
+        else:
+            messages.add_message(request, messages.ERROR, 'Your message was not sent!')
     form = ContactForm()
     return render(request, "website/contact.html", {'form': form})
 
