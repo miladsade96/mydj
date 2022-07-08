@@ -152,3 +152,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = [
     "127.0.0.1"
 ]
+
+# summernote configs
+X_FRAME_OPTIONS = "SAMEORIGIN"
+SUMMERNOTE_THEME = "bs4"
+SUMMERNOTE_CONFIG = {
+    "iframe": True,
+    "width": "100%",
+    "height": "480",
+    "toolbar": [
+        ["style", ["style"]],
+        ["font", ["bold", "italic", "underline", "clear"]],
+        ["fontname", ["fontname"]],
+        ["color", ["color"]],
+        ["paragraph", ["ul", "ol", "paragraph"]],
+        ["height", ["height"]],
+        ["table", ["table"]],
+        ["insert", ["link", "picture", "video"]],
+        ["view", ["fullscreen", "codeview"]],
+    ],
+}
