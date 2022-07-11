@@ -46,3 +46,11 @@ class Comment(models.Model):
     is_approved = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_date']
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
+
+    def __str__(self):
+        return f"{self.name} - {self.subject}"
