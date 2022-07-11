@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from blog.models import Post
+from blog.models import Post, Comment
 from django.utils import timezone
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
@@ -28,8 +28,9 @@ def blog_view(request, **kwargs):
 
 def blog_single(request, pid):
     post = get_object_or_404(Post, id=pid, status=1, published_date__lte=timezone.now())
+    comments = Comment.objects.filter(post=post.id, is_approved=True).order_by('-created_date')
     increment_views(pid)
-    context = {"post": post}
+    context = {"post": post, "comments": comments}
     previous_post, next_post = get_previous_next_posts(pid)
     if previous_post:
         context["previous_post"] = previous_post
