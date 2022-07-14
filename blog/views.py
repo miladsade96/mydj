@@ -4,6 +4,8 @@ from django.utils import timezone
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from blog.forms import CommentForm
 from django.contrib import messages
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 
 
 # Create your views here.
@@ -39,16 +41,19 @@ def blog_single(request, pid):
         else:
             messages.add_message(request, messages.ERROR, "Error adding comment")
     post = get_object_or_404(Post, id=pid, status=1, published_date__lte=timezone.now())
-    comments = Comment.objects.filter(post=post.id, is_approved=True)
-    increment_views(pid)
-    form = CommentForm()
-    context = {"post": post, "comments": comments, "form": form}
-    previous_post, next_post = get_previous_next_posts(pid)
-    if previous_post:
-        context["previous_post"] = previous_post
-    if next_post:
-        context["next_post"] = next_post
-    return render(request, "blog/blog-single.html", context)
+    if post.login_require is False:
+        comments = Comment.objects.filter(post=post.id, is_approved=True)
+        increment_views(pid)
+        form = CommentForm()
+        context = {"post": post, "comments": comments, "form": form}
+        previous_post, next_post = get_previous_next_posts(pid)
+        if previous_post:
+            context["previous_post"] = previous_post
+        if next_post:
+            context["next_post"] = next_post
+        return render(request, "blog/blog-single.html", context)
+    else:
+        return HttpResponseRedirect(reverse("accounts:login"))
 
 
 def increment_views(pid):
