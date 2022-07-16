@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from accounts.forms import UserLoginForm
 
 
 # Create your views here.
 def login_view(request):
     if not request.user.is_authenticated:
         if request.method == "POST":
-            form = AuthenticationForm(request=request, data=request.POST)
+            form = UserLoginForm(request=request, data=request.POST)
             if form.is_valid():
                 username = form.cleaned_data.get('username')
                 password = form.cleaned_data.get('password')
@@ -18,7 +19,7 @@ def login_view(request):
                     return redirect('/')
                 else:
                     pass
-        form = AuthenticationForm()
+        form = UserLoginForm()
         context = {'form': form}
         return render(request, 'accounts/login.html', context)
     else:
