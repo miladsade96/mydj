@@ -150,3 +150,6 @@ SUMMERNOTE_CONFIG = {
 MULTI_CAPTCHA_ADMIN = {
     "engine": "simple-captcha",
 }
+
+# Authentication Backends
+AUTHENTICATION_BACKENDS = ["accounts.backends.EmailBackend"]
