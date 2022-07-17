@@ -13,9 +13,12 @@ def login_view(request):
             if form.is_valid():
                 username = form.cleaned_data.get('username')
                 password = form.cleaned_data.get('password')
+                remember = form.cleaned_data.get('remember_me')
                 user = authenticate(request, username=username, password=password)
                 if user is not None:
                     login(request, user)
+                    if not remember:
+                        request.session.set_expiry(0)
                     return redirect('/')
                 else:
                     pass
