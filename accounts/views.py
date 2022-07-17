@@ -20,11 +20,12 @@ def login_view(request):
                     if not remember:
                         request.session.set_expiry(0)
                     return redirect('/')
-                else:
-                    pass
-        form = UserLoginForm()
-        context = {'form': form}
-        return render(request, 'accounts/login.html', context)
+            else:
+                return render(request, 'accounts/login.html', {'form': form})
+        else:
+            form = UserLoginForm()
+            context = {'form': form}
+            return render(request, 'accounts/login.html', context)
     else:
         return redirect('/')
 
