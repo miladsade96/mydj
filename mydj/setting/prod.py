@@ -27,9 +27,5 @@ DATABASES = {
 }
 
 
-STATIC_ROOT = BASE_DIR / "static"
-MEDIA_ROOT = BASE_DIR / "media"
-
-STATICFILES_DIRS = [
-    BASE_DIR / "statics",
-]
+STATIC_ROOT = "/home/elnsir/public_html/static"
+MEDIA_ROOT = "/home/elnsir/public_html/media"
