@@ -16,6 +16,9 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-chh$&6-#98z$ftso4$qu1-zw0%h&ebxfo+&a!2ae0q+8z1a%iv'
+
 # Application definition
 
 INSTALLED_APPS = [
