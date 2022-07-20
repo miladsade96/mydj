@@ -5,11 +5,11 @@ from mydj.settings import *
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True    # Temporarily set to True to enable debug mode
 
 # INSTALLED_APPS = []
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["elns.ir", "www.elns.ir"]
 
 # site framework
 SITE_ID = 2
