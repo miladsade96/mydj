@@ -85,6 +85,15 @@
               <button type="submit" class="login100-form-btn">Sign Up</button>
             </div>
           </form>
+          <section>
+          {% if messages %}
+            <ul class="messages">
+              {% for message in messages %}
+                <li {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          </section>
         </div>
       </div>
     </div>
