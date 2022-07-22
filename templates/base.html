@@ -52,6 +52,13 @@
                 {% endif %}
               </ul>
             </div>
+            {% if messages %}
+              <ul class="messages">
+                {% for message in messages %}
+                  <li {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
             <div class="col-lg-6 col-sm-6 col-6 header-top-right">
               <div class="header-social">
                 <a href="#"><i class="fa fa-facebook"></i></a>
@@ -87,15 +94,6 @@
     {% block content %}
 	
 	{% endblock %}
-
-
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-          <li {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
 
     <!-- start footer Area -->
     <footer class="footer-area section-gap">
