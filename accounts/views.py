@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from accounts.forms import UserLoginForm
+from accounts.forms import UserLoginForm, UserRegisterForm
 from django.contrib import messages
 
 
@@ -42,11 +41,11 @@ def logout_view(request):
 def signup_view(request):
     if not request.user.is_authenticated:
         if request.method == "POST":
-            form = UserCreationForm(request.POST)
+            form = UserRegisterForm(request.POST)
             if form.is_valid():
                 form.save()
                 return redirect('/')
-        form = UserCreationForm()
+        form = UserRegisterForm()
         context = {'form': form}
         return render(request, 'accounts/signup.html', context)
     else:
