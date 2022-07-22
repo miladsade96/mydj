@@ -29,3 +29,7 @@ DATABASES = {
 
 STATIC_ROOT = "/home/elnsir/public_html/static"
 MEDIA_ROOT = "/home/elnsir/public_html/media"
+
+SECURE_BROWSER_XSS_FILTER = True
+CSRF_COOKIE_SECURE = True
+X_FRAME_OPTIONS = "SAMEORIGIN"
