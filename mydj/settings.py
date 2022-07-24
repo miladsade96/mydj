@@ -161,8 +161,9 @@ AUTHENTICATION_BACKENDS = ["accounts.backends.EmailBackend"]
 
 # email configs
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp-mail.outlook.com'
+EMAIL_HOST = "mail.elns.ir"
 EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'EverLookNeverSee@outlook.com'  # str(os.getenv())
-EMAIL_HOST_PASSWORD = 'C''g@(:R9P)_K,U'  # str(os.getenv())
+EMAIL_HOST_USER = 'info@elns.ir'  # str(os.getenv())
+EMAIL_HOST_PASSWORD = ';.7gZg051)o2'  # str(os.getenv())
