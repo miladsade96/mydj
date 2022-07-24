@@ -31,6 +31,7 @@ def login_view(request):
             context = {'form': form}
             return render(request, 'accounts/login.html', context)
     else:
+        messages.add_message(request, messages.WARNING, "You are already logged In.")
         return redirect('/')
 
 
