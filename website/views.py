@@ -34,3 +34,7 @@ def newsletter_view(request):
             return HttpResponseRedirect('/')
     else:
         return HttpResponseRedirect('/')
+
+
+def maintenance_view(request):
+    return render(request, "maintenance.html")
