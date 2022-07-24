@@ -74,6 +74,9 @@
               <label>Remember Me</label>
               <input type="checkbox" name="remember_me">
             </div>
+            <div class="container-login100-form-btn">
+              <label><a href="{% url 'accounts:password_reset' %}">Forgot Password?</a></label>
+            </div>
           </form>
           <section>
           {% if messages %}
