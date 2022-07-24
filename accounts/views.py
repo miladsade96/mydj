@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, authenticate, logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from accounts.forms import UserLoginForm, UserRegisterForm
 from django.contrib import messages
+from django.contrib.auth.forms import PasswordResetForm
+from django import forms
 
 
 # Create your views here.
@@ -55,3 +57,12 @@ def signup_view(request):
     else:
         messages.add_message(request, messages.WARNING, 'You are already logged in!')
         return redirect('/')
+
+
+class EmailValidationOnForgotPassword(PasswordResetForm):
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        User = get_user_model()
+        if not User.objects.filter(email__iexact=email, is_active=True).exists():
+            raise forms.ValidationError("There is no user registered with this email address!")
+        return email
