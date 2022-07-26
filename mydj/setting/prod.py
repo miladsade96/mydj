@@ -33,3 +33,11 @@ MEDIA_ROOT = "/home/elnsir/public_html/media"
 SECURE_BROWSER_XSS_FILTER = True
 CSRF_COOKIE_SECURE = True
 X_FRAME_OPTIONS = "SAMEORIGIN"
+
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
